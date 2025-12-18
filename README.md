@@ -77,3 +77,11 @@ This project serves as a proof-of-concept for a hybrid trading system that combi
 
 ### 4. Risk Management
 - The current strategy uses a simple reversal logic (Long <-> Short). A robust system should include dynamic **Stop Loss**, **Take Profit**, and **Position Sizing** (e.g., Kelly Criterion).
+
+---
+
+## ⚠️ Important Usage Warnings
+
+1. **Dependency Versions**: This project relies on `tensorflow`, `deap`, and `yfinance`. If you encounter errors on a different machine, please verify library versions in `requirements.txt`.
+2. **Backtesting vs. Live Trading**: The results shown are based on historical backtesting. Past performance is **not** indicative of future results.
+3. **Data Snooping**: The GA optimization sees the entire dataset. For a stricter evaluation, perform an **Out-of-Sample** test on data that the GA has never seen.
