@@ -1,15 +1,58 @@
-# MACD Project
+# Advance Research Project: GA-ML Trading Optimization
 
-## Objective
-To optimize trading strategy parameters using Genetic Algorithms (GA) and subsequently filter false signals using Machine Learning models (Random Forest or LSTM).
+## Overview
+This project serves as a proof-of-concept for a hybrid trading system that combines **Genetic Algorithms (GA)** for parameter optimization and **Machine Learning/Deep Learning (RF/LSTM)** for signal filtering. The goal is to first find a robust technical strategy and then use AI to filter out false signals.
 
-## Workflow
-1. **Strategy Definition**: Define the trading strategy and its parameters.
-2. **GA Optimization**: Use GA to find the best parameter set that maximizes a fitness function (e.g., Sharpe Ratio, Total Return).
-3. **Data Labeling**: Generate signals using the optimized strategy and label them (True/False positive) based on future outcomes.
-4. **ML Filtering**: Train a classifier (RF or LSTM) to predict whether a signal is profitable.
+---
 
-## Tech Stack
-- **GA**: DEAP or PyGAD
-- **ML**: Scikit-Learn (Random Forest), TensorFlow/PyTorch (LSTM)
-- **Backtesting**: Backtrader or VectorBT (to be decided)
+## File Structure & Description
+
+### 1. Main Notebook
+- **`final_project.ipynb`**: 
+  - The core Jupyter Notebook that consolidates the entire workflow.
+  - It demonstrates the step-by-step process: Loading Data -> Optimization (GA) -> Feature Engineering -> Signal Filtering (ML/DL).
+  - Use this file for presentation or interactive experimentation.
+
+### 2. Core Modules
+- **`data_loader.py`**: 
+  - Handles fetching historical data from Yahoo Finance (`yfinance`).
+  - Prepares the data structure (cleaning, calculating returns) for the strategy.
+- **`strategy.py`**: 
+  - Contains the logic for the **MACD Strategy**.
+  - Provides methods to generate buy/sell signals based on `Fast`, `Slow`, and `Signal` periods.
+  - Includes an evaluation function (fitness function) for the Genetic Algorithm.
+
+### 3. Optimization & AI Models
+- **`ga_optimizer.py`**: 
+  - Uses the `DEAP` library to run a Genetic Algorithm.
+  - Evolves the MACD parameters (`Fast`, `Slow`, `Signal`) to maximize the total return.
+- **`ml_filter.py`**: 
+  - Implements a **Random Forest Classifier** (`scikit-learn`).
+  - Analyzes a "snapshot" of technical indicators (RSI, ATR, ADX, MACD Slope) at the moment of entry to predict trade profitability.
+- **`lstm_filter.py`**: 
+  - Implements a **Long Short-Term Memory (LSTM)** network (`TensorFlow/Keras`).
+  - Analyzes a "sequence" of price action (last 10 candles) leading up to a trade to capture temporal patterns.
+
+### 4. Setup Files
+- **`requirements.txt`**: 
+  - Lists all Python dependencies required to run the project (e.g., `pandas`, `numpy`, `tensorflow`, `deap`, `ta`).
+- **`README.md`**: 
+  - This documentation file.
+
+---
+
+## How to Run
+
+1. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Run the Notebook (Recommended)**:
+   - Open `final_project.ipynb` in Jupyter Notebook or VS Code.
+   - Run cells sequentially to see the full pipeline in action.
+
+3. **Run Individual Scripts (Optional)**:
+   - To optimize parameters: `python ga_optimizer.py`
+   - To test Random Forest: `python ml_filter.py`
+   - To test LSTM: `python lstm_filter.py`
