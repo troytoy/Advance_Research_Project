@@ -1,4 +1,4 @@
-# GA-ML Trading Optimization Project
+# MACD Project
 
 ## Objective
 To optimize trading strategy parameters using Genetic Algorithms (GA) and subsequently filter false signals using Machine Learning models (Random Forest or LSTM).
