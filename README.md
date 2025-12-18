@@ -1,4 +1,4 @@
-# Advance Research Project: GA-ML Trading Optimization
+# Forex Trading: MACD Strategy Enhancement with Machine Learning
 
 ## Overview
 This project serves as a proof-of-concept for a hybrid trading system that combines **Genetic Algorithms (GA)** for parameter optimization and **Machine Learning/Deep Learning (RF/LSTM)** for signal filtering. The goal is to first find a robust technical strategy and then use AI to filter out false signals.
