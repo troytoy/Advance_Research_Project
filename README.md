@@ -21,6 +21,9 @@ This project serves as a proof-of-concept for a hybrid trading system that combi
   - Contains the logic for the **MACD Strategy**.
   - Provides methods to generate buy/sell signals based on `Fast`, `Slow`, and `Signal` periods.
   - Includes an evaluation function (fitness function) for the Genetic Algorithm.
+- **`backtest_metrics.py`**:
+  - A utility module to calculate comprehensive performance statistics.
+  - Metrics include: **Sharpe Ratio**, **Max Drawdown**, **Win Rate**, **Profit Factor**, etc.
 
 ### 3. Optimization & AI Models
 - **`ga_optimizer.py`**: 
