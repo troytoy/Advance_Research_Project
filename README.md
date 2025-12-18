@@ -10,7 +10,7 @@ This project serves as a proof-of-concept for a hybrid trading system that combi
 ### 1. Main Notebook
 - **`final_project.ipynb`**: 
   - The core Jupyter Notebook that consolidates the entire workflow.
-  - It demonstrates the step-by-step process: Loading Data -> Optimization (GA) -> Feature Engineering -> Signal Filtering (ML/DL).
+  - It demonstrates the step-by-step process: Loading Data -> Optimization (GA) -> Feature Engineering -> Signal Filtering (ML/DL) -> Comparative Backtest & Visualization.
   - Use this file for presentation or interactive experimentation.
 
 ### 2. Core Modules
