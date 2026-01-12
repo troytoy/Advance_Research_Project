@@ -19,10 +19,18 @@ def calculate_metrics(returns_series, trades_df=None):
     total_return = (1 + returns_series).prod() - 1
     metrics['Total Return'] = f"{total_return * 100:.2f}%"
     
-    # 2. Annualized Return (Assuming 252 trading days)
-    days = len(returns_series)
-    if days > 0:
-        annualized_return = (1 + total_return) ** (252 / days) - 1
+    # 2. Annualized Return
+    # Calculate actual calendar period from the index
+    if len(returns_series) > 0 and hasattr(returns_series.index, 'min'):
+        period_start = returns_series.index.min()
+        period_end = returns_series.index.max()
+        years = (period_end - period_start).days / 365.25
+        
+        # Ensure minimum period to avoid extreme annualization
+        if years < 0.01:  # Less than ~4 days
+            years = len(returns_series) / 252  # Fallback to trading days
+        
+        annualized_return = (1 + total_return) ** (1 / years) - 1
         metrics['Annualized Return'] = f"{annualized_return * 100:.2f}%"
     else:
         metrics['Annualized Return'] = "N/A"
